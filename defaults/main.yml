@@ -1,0 +1,15 @@
+---
+
+# Define version of the Fedora Camel Toolbox to install
+fc_tools_version: 4.5.1
+
+# Define the list feature repositorys to add to Apache Karaf
+karaf_fctools_repoadd: "mvn:org.fcrepo.camel/toolbox-features/{{ fc_tools_version }}/xml/features"
+
+# Define list of Fedora Camel Toolbox features to be install in Apache Karaf
+karaf_feature_install:
+  - "fcrepo-indexing-solr"
+  - "fcrepo-indexing-triplestore"
+  - "fcrepo-reindexing"
+  - "fcrepo-fixity"
+  - "fcrepo-serialization"
