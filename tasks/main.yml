@@ -1,10 +1,11 @@
 ---
 
 - name: Determine if the Fedora Toolbox repository needs to be added to Karaf
-  find: paths="{{ karaf_home }}/data/cache" contains="{{ karaf_fctools_repoadd }}" recurse=yes
+  shell: "find {{ karaf_home }}/data/cache/ -type f | xargs grep {{ karaf_fctools_repoadd }}"
   register: fc_toolbox_repo_status
-  changed_when: "fc_toolbox_repo_status.files == 0"
+  ignore_errors: True
+
 
 - name: Install Fedora Toolbox repository in Karaf
   command: "{{ karaf_home }}/bin/client feature:repo-add {{ karaf_fctools_repoadd }}"
-  when: fc_toolbox_repo_status.files == 0
+  when: fc_toolbox_repo_status|failed
