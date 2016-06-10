@@ -11,9 +11,7 @@
   when: fc_toolbox_repo_status|failed
 
 - name: Install Fedora Toolbox features in Karaf
-  command: >
-    "{{ karaf_home }}/bin/client feature:install {{ item.feature }}
-    creates={{ karaf_home }}/etc/{{ item.config }}"
+  command: "{{ karaf_home }}/bin/client feature:install {{ item.feature }} creates={{ karaf_home }}/etc/{{ item.config }}"
   with_items: "{{ karaf_fctools_install }}"
 
 - name: Put in place Fedora Toolbox configuration files
