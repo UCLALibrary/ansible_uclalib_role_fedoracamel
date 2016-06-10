@@ -6,7 +6,21 @@
   changed_when: False
   ignore_errors: True
 
-
 - name: Install Fedora Toolbox repository in Karaf
   command: "{{ karaf_home }}/bin/client feature:repo-add {{ karaf_fctools_repoadd }}"
   when: fc_toolbox_repo_status|failed
+
+- name: Install Fedora Toolbox features in Karaf
+  command: >
+    "{{ karaf_home }}/bin/client feature:install {{ item.feature }}"
+    creates={{ karaf_home }}/etc/{{ item.config }}
+  with_items: "{{ karaf_fctools_install }}"
+
+- name: Put in place Fedora Toolbox configuration files
+  template:
+    src: "{{ item.config }}.j2"
+    dest: "{{ karaf_home }}/etc/{{ item.config }}"
+    owner: "karaf"
+    group: "karaf"
+    mode: 0644
+  with_items: "{{ karaf_fctools_install }}"
