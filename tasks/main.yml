@@ -22,3 +22,5 @@
     group: "karaf"
     mode: 0644
   with_items: "{{ karaf_fctools_install }}"
+  notify:
+    - restart karaf
