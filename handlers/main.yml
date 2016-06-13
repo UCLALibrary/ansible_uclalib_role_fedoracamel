@@ -1,0 +1,4 @@
+---
+
+- name: restart karaf
+  service: name=karaf state=restarted
