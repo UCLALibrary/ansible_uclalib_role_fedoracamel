@@ -7,7 +7,7 @@ fcrepo.authPassword={{ fedora_password }}
 fcrepo.authHost=
 
 # The baseUrl for the fedora repository.
-fcrepo.baseUrl={{ fedora_url }}
+fcrepo.baseUrl={{ fedora_url }}/fcrepo/rest
 
 # The default `LDPath` transformation to use. This is overridden on a per-object
 # basis with the `indexing:hasIndexingTransformation` predicate.
@@ -18,7 +18,7 @@ fcrepo.defaultTransform=default
 indexing.predicate=false
 
 # The JMS connection URI, used for connecting to a local or remote ActiveMQ broker.
-jms.brokerUrl=tcp://localhost:61616
+jms.brokerUrl=tcp://{{ fedora_url }}:61616
 
 # The camel URI for the incoming message stream.
 input.stream=activemq:topic:fedora
