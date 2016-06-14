@@ -9,7 +9,7 @@ karaf_fctools_repoadd: "mvn:org.fcrepo.camel/toolbox-features/{{ fc_tools_versio
 # Define fedora camel toolbox variables
 fedora_username: "fedoraAdmin"
 fedora_password: "fedoraPassword"
-fedora_url: "fedoraServer.library.ucla.edu/fcrepo/rest"
+fedora_url: "fedoraServer.library.ucla.edu"
 solr_url: "solrServer.library.ucla.edu/solr/fedora4"
 
 
