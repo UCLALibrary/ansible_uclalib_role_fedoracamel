@@ -22,5 +22,6 @@
     group: "karaf"
     mode: 0644
   with_items: "{{ karaf_fctools_install }}"
+  when: item.config is defined
   notify:
     - restart karaf
